@@ -1,118 +1,229 @@
-import Image from 'next/image'
-import { Inter } from 'next/font/google'
-
-const inter = Inter({ subsets: ['latin'] })
+import PrimaryButton from '@/components/atoms/button/primary-button';
+import { IconChevronDown, IconSearch } from '@tabler/icons-react';
+import Image from 'next/image';
 
 export default function Home() {
   return (
-    <main
-      className={`flex min-h-screen flex-col items-center justify-between p-24 ${inter.className}`}
-    >
-      <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
-        <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
-          Get started by editing&nbsp;
-          <code className="font-mono font-bold">src/pages/index.js</code>
-        </p>
-        <div className="fixed bottom-0 left-0 flex h-48 w-full items-end justify-center bg-gradient-to-t from-white via-white dark:from-black dark:via-black lg:static lg:h-auto lg:w-auto lg:bg-none">
-          <a
-            className="pointer-events-none flex place-items-center gap-2 p-8 lg:pointer-events-auto lg:p-0"
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className="dark:invert"
-              width={100}
-              height={24}
-              priority
+    <main className="flex min-h-screen flex-col items-center text-gray-700 text-xs">
+      {/* Nav */}
+      <nav className="fixed bg-gray-0 w-full flex items-center justify-between gap-2 py-4 px-12">
+        <h1 className="font-bold text-brand-500 text-xl">mindFull</h1>
+
+        {/* Search Bar */}
+        <section className="w-96 flex items-center justify-between gap-4 px-4 py-2 outline outline-1 outline-stroke-dark rounded-full">
+          <div className="flex gap-2">
+            <IconSearch className="w-4 h-auto" />
+            <input
+              type="text"
+              placeholder="Search Jobs"
+              className="w-full text-xs text-ellipsis outline-none ring-0 focus:ring-0"
             />
-          </a>
+          </div>
+          <div className="flex items-center justify-center gap-1">
+            <IconChevronDown className="w-4 h-auto" />
+            <small className="text-xs">Jobs</small>
+          </div>
+        </section>
+
+        <div className="flex items-center justify-center gap-10">
+          <p className="flex items-center justify-center gap-1">
+            About <IconChevronDown className="w-4 h-auto" />
+          </p>
+          <p>Contact</p>
         </div>
-      </div>
 
-      <div className="relative flex place-items-center before:absolute before:h-[300px] before:w-[480px] before:-translate-x-1/2 before:rounded-full before:bg-gradient-radial before:from-white before:to-transparent before:blur-2xl before:content-[''] after:absolute after:-z-20 after:h-[180px] after:w-[240px] after:translate-x-1/3 after:bg-gradient-conic after:from-sky-200 after:via-blue-200 after:blur-2xl after:content-[''] before:dark:bg-gradient-to-br before:dark:from-transparent before:dark:to-blue-700/10 after:dark:from-sky-900 after:dark:via-[#0141ff]/40 before:lg:h-[360px]">
+        <div className="flex items-center justify-center gap-4">
+          <button>Log In</button>
+          <PrimaryButton textContent="Sign Up" />
+        </div>
+      </nav>
+
+      {/* Hero */}
+      <section className="flex items-center justify-center w-full px-12 py-10 gap-10 mt-16">
+        <div>
+          <h1 className="w-96 font-bold text-3xl">
+            Unlock your potential and
+            <span className="text-brand-500"> find future</span>
+          </h1>
+          <p className="w-60 mt-2">
+            Unlock the power of diversity and inclusion in your workforce
+          </p>
+          <PrimaryButton textContent="Get Started" className="mt-4" />
+        </div>
         <Image
-          className="relative dark:drop-shadow-[0_0_0.3rem_#ffffff70] dark:invert"
-          src="/next.svg"
-          alt="Next.js Logo"
-          width={180}
-          height={37}
-          priority
+          src="/images/mindfull-illustration-hero.png"
+          width={500}
+          height={500}
+          alt="Mindfull Ilustration"
+          className=" w-[30vw] "
         />
-      </div>
+      </section>
 
-      <div className="mb-32 grid text-center lg:mb-0 lg:grid-cols-4 lg:text-left">
-        <a
-          href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Docs{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Find in-depth information about Next.js features and API.
-          </p>
-        </a>
+      {/* Partners */}
+      <section className="flex flex-col items-center justify-center w-full px-12 py-5">
+        <h1 className="text-lg text-gray-500 font-semibold">Trusted By</h1>
+        <div className="flex items-center justify-center gap-4">
+          <Image
+            src="/images/partners/prosple.png"
+            width={200}
+            height={200}
+            alt="Prosple"
+          />
+          <Image
+            src="/images/partners/kadakareer.png"
+            width={200}
+            height={200}
+            alt="Prosple"
+          />
+        </div>
+      </section>
 
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Learn{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Learn about Next.js in an interactive course with&nbsp;quizzes!
+      {/* Feature: Browse */}
+      <section className="flex items-center justify-center w-full px-12 py-5 gap-10">
+        <div>
+          <h1 className="w-96 font-bold text-3xl text-left">
+            Browse
+            <span className="text-brand-500"> Recommended Jobs</span> Made For
+            You
+          </h1>
+          <p className="w-64 mt-2">
+            Our platform helps you find jobs that match your strengths and
+            abilities.
           </p>
-        </a>
+        </div>
 
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Templates{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Discover and deploy boilerplate example Next.js&nbsp;projects.
-          </p>
-        </a>
+        <Image
+          src="/features/browse-feature.svg"
+          width={500}
+          height={500}
+          alt="Browsing Feature"
+          className="w-1/2"
+        />
+      </section>
 
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=default-template-tw&utm_campaign=create-next-app"
-          className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={`mb-3 text-2xl font-semibold`}>
-            Deploy{' '}
-            <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
-              -&gt;
-            </span>
-          </h2>
-          <p className={`m-0 max-w-[30ch] text-sm opacity-50`}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
-          </p>
-        </a>
-      </div>
+      {/* Feature: Job Opportunities */}
+      <section className="flex flex-col items-center justify-center w-full px-12 py-5 text-center">
+        <h1 className="w-96 font-bold text-3xl mt-2">
+          Create
+          <span className="text-brand-500"> Job Opportunities</span>
+        </h1>
+        <p className="w-80 mt-4">
+          Employers can create job postings that are inclusive and
+          accommodating, leading to mutual benefits.
+        </p>
+        <div className="mt-6 flex flex-col gap-4">
+          <div className="flex items-center justify-center gap-4">
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Design & Creative
+            </div>
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Development
+            </div>
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Ghostwriting
+            </div>
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Technology
+            </div>
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Marketing
+            </div>
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Bookkeeping
+            </div>
+          </div>
+
+          <div className="flex items-center justify-center gap-4">
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Freelance
+            </div>
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Copywriting
+            </div>
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Project Manager
+            </div>
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Engineering
+            </div>
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Legal
+            </div>
+            <div className="text-gray-500 outline outline-1 outline-gray-300 px-4 py-2 rounded-lg">
+              Data Entry
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-secondary-500 flex flex-col justify-between w-full h-fit px-12 py-10 mt-10 text-center rounded-t-3xl text-gray-0 gap-[5vw]">
+        <div className="w-full flex items-start justify-between">
+          <div className="text-left">
+            <h1 className="font-bold text-2xl">Sign up to our newsletter</h1>
+            <p>Stay up-to-date with our newsletter</p>
+          </div>
+          <section className="w-96 flex items-center justify-between gap-4 p-2 pl-4 outline outline-1 outline-white rounded-full">
+            <div className="flex gap-2 w-full">
+              <input
+                type="text"
+                placeholder="Enter your email"
+                className="w-full text-xs text-ellipsis outline-none ring-0 focus:ring-0 bg-secondary-500"
+              />
+              <PrimaryButton textContent="Subscribe" />
+            </div>
+          </section>
+        </div>
+        <div className="w-full flex justify-between">
+          <div>
+            <div className="flex items-center gap-2">
+              <Image
+                src="/brand/footer-logo.svg"
+                width={30}
+                height={30}
+                alt="Footer Logo"
+              />
+              <h1 className="font-bold text-gray-0 text-xl">mindFull</h1>
+            </div>
+            <p className="text-left mt-4 w-60">
+              Unlock the power of diversity and inclusion in your workforce
+            </p>
+          </div>
+          <div className="flex gap-[5vw] text-left">
+            <div className="flex flex-col gap-2">
+              <h1 className="font-semibold mb-4">About</h1>
+              <a href="#">Why Us</a>
+              <a href="#">Features</a>
+              <a href="#">Browse Jobs</a>
+            </div>
+            <div className="flex flex-col gap-2">
+              <h1 className="font-semibold mb-4">Company</h1>
+              <a href="#">Matrix Co.</a>
+              <a href="#">Stores</a>
+              <a href="#">Testimonials</a>
+              <a href="#">Blogs</a>
+            </div>
+            <div className="flex flex-col gap-2">
+              <h1 className="font-semibold mb-4">Resources</h1>
+              <a href="#">Support</a>
+              <a href="#">Community</a>
+              <a href="#">Reviews</a>
+              <a href="#">Success Stories</a>
+            </div>
+            <div className="flex flex-col gap-2">
+              <h1 className="font-semibold mb-4">Any Questions?</h1>
+              {/* Email */}
+              <a
+                href="mailto:m.desk@mindfull.com"
+                className="flex items-center gap-2"
+              >
+                m.desk@mindfull.com
+              </a>
+              <small>Feel free to ask anything regarding our service</small>
+            </div>
+          </div>
+        </div>
+      </footer>
     </main>
-  )
+  );
 }
