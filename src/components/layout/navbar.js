@@ -1,6 +1,7 @@
 import React from 'react';
 import { IconChevronDown, IconSearch } from '@tabler/icons-react';
 import PrimaryButton from '@/components/atoms/buttons/primary-button';
+import Link from 'next/link';
 
 export default function Navbar() {
   return (
@@ -31,7 +32,7 @@ export default function Navbar() {
       </div>
 
       <div className="flex items-center justify-center gap-[2vw]">
-        <button>Log In</button>
+        <Link href="/login">Log In</Link>
         <PrimaryButton textContent="Sign Up" to="/signup" />
       </div>
     </nav>

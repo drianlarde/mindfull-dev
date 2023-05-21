@@ -16,7 +16,7 @@ const EmployerSignup = () => {
           <h1 className="text-4xl font-semibold">
             Sign Up as <span className="text-brand-500">Employer</span>
           </h1>
-          <p className="mb-12 mt-4 text-gray-500">
+          <p className="mb-6 mt-2 text-gray-500">
             Please fill out all necessary information
           </p>
 

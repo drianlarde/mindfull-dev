@@ -24,7 +24,7 @@ const Signup = () => {
   return (
     <>
       <NavbarLogo />
-      <main className="flex h-fit flex-col items-center p-10 text-xs text-gray-700">
+      <main className="flex h-fit flex-col items-center px-10 text-xs text-gray-700">
         <section className="flex flex-col items-center">
           <h1 className="mb-10 text-3xl font-bold text-gray-800">Join as?</h1>
           {/* Cards */}
@@ -83,9 +83,12 @@ const Signup = () => {
             textContent="Next"
             className="mt-10 h-12 w-60 rounded-lg"
             buttonIconRight={<IconChevronRight size={16} />}
+            to={
+              activeButton === 'worker' ? '/signup/worker' : '/signup/employer'
+            }
           />
           <Link className="mt-4 font-medium underline" href="/login">
-            Already have an account?{' '}
+            Already have an account?
             <span className="cursor-pointer font-bold text-brand-500">
               Log In
             </span>

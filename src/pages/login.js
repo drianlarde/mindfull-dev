@@ -11,7 +11,7 @@ const Login = () => {
   return (
     <>
       <NavbarLogo />
-      <main className="relative flex h-fit flex-col items-center p-10 text-xs text-gray-700">
+      <main className="relative flex h-fit flex-col items-center px-10 text-xs text-gray-700">
         <section className="flex justify-between">
           <Image
             src="/images/mindfull-illustration-login.png"
@@ -24,18 +24,20 @@ const Login = () => {
             <h1 className="text-4xl font-semibold">
               Log In to <span className="text-brand-500">mindFull</span>
             </h1>
-            <p className="mt-2 w-96 text-lg font-medium leading-tight text-gray-500">
+            <p className="mb-8 mt-2 w-96 text-lg font-medium leading-tight text-gray-500">
               Unlock the power of diversity and inclusion in your workforce
             </p>
             <PrimaryInput
               type="text"
               placeholder="Email"
               icon={<IconUser size={20} />}
+              label="Email"
             />
             <PrimaryInput
               type="password"
               placeholder="Password"
               icon={<IconLock size={20} />}
+              label="Password"
             />
             <div className="mt-4 flex justify-between">
               <div className="flex items-center justify-center gap-2">
