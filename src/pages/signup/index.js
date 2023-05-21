@@ -25,7 +25,7 @@ const Signup = () => {
     <>
       <NavbarLogo />
       <main className="flex h-fit flex-col items-center p-10 text-xs text-gray-700">
-        <section className="mt-10 flex flex-col items-center">
+        <section className="flex flex-col items-center">
           <h1 className="mb-10 text-3xl font-bold text-gray-800">Join as?</h1>
           {/* Cards */}
           <div className="flex gap-6">
