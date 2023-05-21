@@ -8,7 +8,7 @@ export default function Home() {
   return (
     <>
       <Navbar />
-      <main className="flex min-h-screen flex-col items-center px-36 text-xs text-gray-700">
+      <main className="flex h-fit flex-col items-center px-36 text-xs text-gray-700">
         {/* Hero */}
         <section className="mt-16 flex w-full items-center justify-between gap-10 py-10">
           <div>

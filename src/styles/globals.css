@@ -7,3 +7,21 @@ body {
   margin: 0;
   padding: 0;
 }
+
+/* Change scrollbar color to #3F75FF  */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f1f1;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #3f75ff;
+  border-radius: 1em;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #223d81;
+}
