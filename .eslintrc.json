@@ -19,5 +19,14 @@
         "endOfLine": "lf"
       }
     ]
-  }
+  },
+  "overrides": [
+    {
+      "files": ["*.js", "*.jsx"],
+      "rules": {
+        "sort-vars": "off",
+        "sort-keys": "off"
+      }
+    }
+  ]
 }
