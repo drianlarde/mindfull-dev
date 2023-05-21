@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Footer from '@/components/layout/footer';
-import Image from 'next/image';
+import NavbarLogo from '@/components/layout/navbar-logo';
 import Link from 'next/link';
 
 import {
@@ -11,30 +11,41 @@ import {
 import PrimaryButton from '@/components/atoms/buttons/primary-button';
 
 const Signup = () => {
+  const [activeButton, setActiveButton] = useState(null);
+
+  const handleClick = (button) => {
+    setActiveButton(button);
+  };
+
+  useEffect(() => {
+    console.log('Active Button:', activeButton);
+  }, [activeButton]);
+
   return (
     <>
-      <main className="flex h-fit flex-col items-center text-gray-700 text-xs p-10">
-        <nav className="w-full">
-          <Link href="/">
-            <Image
-              src="/brand/logo-icon-text.svg"
-              alt="Logo Icon Text"
-              width={150}
-              height={150}
-            />
-          </Link>
-        </nav>
-        <section className="flex flex-col items-center mt-10">
-          <h1 className="text-gray-800 text-3xl font-bold mb-10">Join as?</h1>
+      <NavbarLogo />
+      <main className="flex h-fit flex-col items-center p-10 text-xs text-gray-700">
+        <section className="mt-10 flex flex-col items-center">
+          <h1 className="mb-10 text-3xl font-bold text-gray-800">Join as?</h1>
           {/* Cards */}
           <div className="flex gap-6">
             {/* Card */}
-            <div className="outline outline-2 outline-gray-200 p-8 rounded-xl w-72 shadow-lg">
+            <button
+              className={`w-72 rounded-xl p-8 text-left shadow-lg outline outline-2 ${
+                activeButton === 'worker'
+                  ? 'outline-brand-500'
+                  : 'outline-gray-200'
+              }`}
+              onClick={() => handleClick('worker')}
+            >
               <div className="flex items-start justify-between">
                 <IconBriefcase size={32} />
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={activeButton === 'worker' ? true : false}
+                />
               </div>
-              <h1 className="font-bold text-xl w-52 mb-2 mt-4">
+              <h1 className="mb-2 mt-4 w-52 text-xl font-bold">
                 I’m a <span className="text-brand-500">worker</span>, finding a
                 job
               </h1>
@@ -42,13 +53,23 @@ const Signup = () => {
                 Seeking job opportunities from inclusive and accommodating
                 employers.
               </p>
-            </div>
-            <div className="outline outline-2 outline-gray-200 p-8 rounded-xl w-72 shadow-lg">
+            </button>
+            <button
+              className={`w-72 rounded-xl p-8 text-left shadow-lg outline outline-2 ${
+                activeButton === 'employer'
+                  ? 'outline-brand-500'
+                  : 'outline-gray-200'
+              }`}
+              onClick={() => handleClick('employer')}
+            >
               <div className="flex items-start justify-between">
                 <IconUserSearch size={32} />
-                <input type="checkbox" />
+                <input
+                  type="checkbox"
+                  checked={activeButton === 'employer' ? true : false}
+                />
               </div>
-              <h1 className="font-bold text-xl w-52 mb-2 mt-4">
+              <h1 className="mb-2 mt-4 w-52 text-xl font-bold">
                 I’m a <span className="text-brand-500">employer</span>, hiring
                 workers
               </h1>
@@ -56,19 +77,19 @@ const Signup = () => {
                 A company or individual creating job opportunities tailored to
                 neurodiverse individuals.
               </p>
-            </div>
+            </button>
           </div>
           <PrimaryButton
             textContent="Next"
-            className="w-60 h-12 rounded-lg mt-10"
+            className="mt-10 h-12 w-60 rounded-lg"
             buttonIconRight={<IconChevronRight size={16} />}
           />
-          <a className="mt-4 font-medium underline">
+          <Link className="mt-4 font-medium underline" href="/login">
             Already have an account?{' '}
-            <span className="text-brand-500 font-bold cursor-pointer">
+            <span className="cursor-pointer font-bold text-brand-500">
               Log In
             </span>
-          </a>
+          </Link>
         </section>
       </main>
       <Footer />
