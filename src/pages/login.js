@@ -45,7 +45,7 @@ const Login = () => {
                   id="checkbox_id"
                   value="value"
                 />
-                <label for="checkbox_id">Remember me</label>
+                <label htmlFor="checkbox_id">Remember me</label>
               </div>
               <Link href="/forgot-password" className="underline">
                 Forgot password
