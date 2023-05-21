@@ -1,11 +1,43 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
+import { motion, useAnimation } from 'framer-motion';
 import { IconChevronDown, IconSearch } from '@tabler/icons-react';
 import PrimaryButton from '@/components/atoms/buttons/primary-button';
 import Link from 'next/link';
 
 export default function Navbar() {
+  const controls = useAnimation();
+  const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const currentScrollPos = window.pageYOffset;
+      if (prevScrollPos > currentScrollPos) {
+        controls.start('visible');
+      } else {
+        controls.start('hidden');
+      }
+      setPrevScrollPos(currentScrollPos);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollPos, controls]);
+
+  const variants = {
+    hidden: { y: '-100%' },
+    visible: { y: 0 }
+  };
+
   return (
-    <nav className="fixed flex w-full items-center justify-between gap-[4vw] bg-gray-0 px-20 py-4 text-xs">
+    <motion.nav
+      className="fixed flex w-full items-center justify-between gap-[4vw] bg-gray-0 px-20 py-4 text-xs text-gray-700"
+      initial="hidden"
+      animate={controls}
+      exit="hidden"
+      variants={variants}
+      transition={{ ease: 'easeOut', duration: 0.3 }}
+    >
       <h1 className="text-xl font-bold text-brand-500">mindFull</h1>
 
       {/* Search Bar */}
@@ -35,6 +67,6 @@ export default function Navbar() {
         <Link href="/login">Log In</Link>
         <PrimaryButton textContent="Sign Up" to="/signup" />
       </div>
-    </nav>
+    </motion.nav>
   );
 }
