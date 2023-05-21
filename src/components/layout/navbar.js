@@ -1,42 +1,29 @@
 import React, { useEffect, useState } from 'react';
-import { motion, useAnimation } from 'framer-motion';
+import { motion, useViewportScroll, useTransform } from 'framer-motion';
 import { IconChevronDown, IconSearch } from '@tabler/icons-react';
 import PrimaryButton from '@/components/atoms/buttons/primary-button';
 import Link from 'next/link';
 
 export default function Navbar() {
-  const controls = useAnimation();
-  const [prevScrollPos, setPrevScrollPos] = useState(0);
+  const { scrollYProgress } = useViewportScroll();
+  const yRange = useTransform(scrollYProgress, [0, 0.1], [0, 1]);
+  const [isNearTop, setIsNearTop] = useState(true);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
-      if (prevScrollPos > currentScrollPos) {
-        controls.start('visible');
-      } else {
-        controls.start('hidden');
-      }
-      setPrevScrollPos(currentScrollPos);
-    };
-
-    window.addEventListener('scroll', handleScroll);
-
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, [prevScrollPos, controls]);
+  useEffect(() => yRange.onChange((v) => setIsNearTop(v < 0.05)), [yRange]);
 
   const variants = {
     hidden: { y: '-100%' },
-    visible: { y: 0 }
+    show: { y: '0%', transition: { duration: 0.5 } },
+    exit: { y: '-100%', transition: { duration: 0.5 } }
   };
 
   return (
     <motion.nav
-      className="fixed flex w-full items-center justify-between gap-[4vw] bg-gray-0 px-20 py-4 text-xs text-gray-700"
-      initial="hidden"
-      animate={controls}
-      exit="hidden"
+      className="fixed flex w-full items-center justify-between gap-[4vw] bg-gray-0 px-20 py-4 text-xs"
       variants={variants}
-      transition={{ ease: 'easeOut', duration: 0.3 }}
+      initial="hidden"
+      animate={isNearTop ? 'show' : 'exit'}
+      exit="exit"
     >
       <h1 className="text-xl font-bold text-brand-500">mindFull</h1>
 
